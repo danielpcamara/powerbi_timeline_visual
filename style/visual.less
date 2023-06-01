@@ -1,0 +1,65 @@
+
+// Base in https://codeconvey.com/simple-horizontal-timeline-css/
+
+@color-primary: #00ADEF;
+
+
+ul.timeline {
+	width:100%; //Auto?
+	height: 20px;
+	display: inline-block;
+	list-style: none;
+	text-align: justify;
+	//margin: 50px auto;
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,0)), color-stop(45%, rgba(255,255,255,0)), color-stop(51%, @color-primary), color-stop(57%, rgba(255,255,255,0)), color-stop(100%, rgba(255,255,255,0)));
+	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 45%, @color-primary 51%, rgba(255,255,255,0) 57%, rgba(255,255,255,0) 100%);
+}
+ul.timeline:after {
+    display: inline-block;
+    content: "";
+    width: 100%;
+}
+li.event {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: @color-primary;
+	text-align: center;
+	line-height: 1.2;
+	position: relative;
+	border-radius: 50%;
+	//display: inline-block;
+    //flex: 1;
+}
+li.event:before {
+	display: inline-block;
+	content: attr(datadate);
+	font-size: 16px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+li.event:nth-child(odd):before {
+	top: -40px;
+}
+li.event:nth-child(even):before {
+	bottom: -40px;
+}
+li.event:after {
+	display: inline-block;
+	content: attr(datatext);
+	font-size: 12px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+li.event:nth-child(odd):after {
+	bottom: 0;
+	margin-bottom: -10px;
+	transform: translate(-50%, 100%);
+}
+li.event:nth-child(even):after {
+	top: 0;
+	margin-top: -10px;
+	transform: translate(-50%, -100%);
+}
